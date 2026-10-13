@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Առցանց վճարում — Փղիկ.am</title>
+ <meta name="description" content="Առցանց վճարում՝ քարտով, Idram, Rocket Line: Անվտանգ վճարման էջ:">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="css/style.css">
+ <script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="inner">
+
+ <div class="topbar">
+ <div class="container topbar-in">
+ <div class="topbar-left">
+ <span class="tb-item">Անվտանգ վճարման էջ (դեմո-շլյուզ)</span>
+ </div>
+ <div class="topbar-right">
+ <a class="tb-item" href="tel:+37493553944">+374 93 55 39 44</a>
+ </div>
+ </div>
+ </div>
+
+ <header class="header" id="header">
+ <div class="container header-in">
+ <a class="logo" href="index.html">
+ <span class="logo-mark">Փ</span>
+ <span class="logo-text">փղիկ<b>.am</b></span>
+ </a>
+ </div>
+ </header>
+
+ <div class="container page-head">
+ <nav class="crumbs" aria-label="Հասցե">
+ <a href="account.html#orders">Իմ պատվերները</a><span class="sep">/</span><span>Վճարում</span>
+ </nav>
+ <h1 class="page-title">Առցանց վճարում</h1>
+ </div>
+
+ <div class="container pay-layout" id="payRoot">
+ <div class="o-card">
+ <h4>Պատվեր</h4>
+ <div id="paySummary">Բեռնվում է…</div>
+ </div>
+
+ <div class="o-card pay-card">
+ <div class="pay-head">
+ <h4>Քարտի տվյալներ</h4>
+ <span class="pay-brands">VISA · Mastercard · ArCa</span>
+ </div>
+ <form class="checkout-form pay-form" onsubmit="return false" style="display:block;border:none;padding:0">
+ <label>Քարտի համար
+ <input type="text" id="cardNumber" inputmode="numeric" placeholder="4111 1111 1111 1111" autocomplete="cc-number" maxlength="23">
+ </label>
+ <div class="pay-row">
+ <label>Ժամկետը (MM/YY)
+ <input type="text" id="cardExp" placeholder="12/28" autocomplete="cc-exp" maxlength="5">
+ </label>
+ <label>CVV
+ <input type="password" id="cardCvv" placeholder="•••" autocomplete="cc-csc" maxlength="4">
+ </label>
+ </div>
+ <label>Քարտապան
+ <input type="text" id="cardHolder" placeholder="ARAM ABRAHAMYAN" autocomplete="cc-name">
+ </label>
+ <button class="btn btn-primary btn-block" type="button" id="payBtn">Վճարել</button>
+ <p class="cart-note"> Դեմո-շլյուզ. տվյալները ուղարկվում են միայն ձեր տեղական սերվերին: Թեստային քարտ՝ <b>4111 1111 1111 1111</b>, ցանկացած ապագա ժամկետ:</p>
+ </form>
+ </div>
+ </div>
+
+ <footer class="footer">
+ <div class="container">
+ <div class="f-bottom" style="border-top:none">
+ <span>© 2026 Փղիկ.am — Բոլոր իրավունքները պաշտպանված են</span>
+ <span><a href="account.html#orders">Իմ պատվերները</a></span>
+ </div>
+ </div>
+ </footer>
+
+ <div class="toast" id="toast" role="status"></div>
+
+ <script src="js/app.js" defer></script>
+ <script src="js/lang.js" defer></script>
+ <script src="js/main.js" defer></script>
+ <script src="js/pay.js" defer></script>
+</body>
+</html>

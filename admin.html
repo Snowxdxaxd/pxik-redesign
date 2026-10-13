@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Ադմին — Փղիկ.am</title>
+ <meta name="robots" content="noindex">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Փ</text></svg>">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="css/style.css">
+ <script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="inner">
+
+ <div class="topbar">
+ <div class="container topbar-in">
+ <div class="topbar-left">
+ <span class="tb-item"> Ադմին-վահանակ</span>
+ </div>
+ <div class="topbar-right">
+ <a class="tb-item" href="index.html">← Դեպի խանութ</a>
+ <span class="tb-sep"></span>
+ <button class="tb-callback" id="adminLogout" style="background:none;border:none;font:inherit;cursor:pointer">Ելք</button>
+ </div>
+ </div>
+ </div>
+
+ <header class="header" id="header">
+ <div class="container header-in">
+ <a class="logo" href="admin.html">
+ <span class="logo-mark adm">Փ</span>
+ <span class="logo-text">փղիկ<b>.am</b> — Ադմին</span>
+ </a>
+ </div>
+ </header>
+
+ <div class="container page-head">
+ <h1 class="page-title">Կառավարման վահանակ</h1>
+ </div>
+
+ <div class="container" id="adminRoot">
+ <div class="dash-grid" id="dashGrid"></div>
+
+ <div class="tabs" role="tablist" style="display:inline-flex;margin:26px 0 20px">
+ <button class="pd-tab" data-panel="delivery"> Առաքման պատվերներ</button>
+ <button class="pd-tab" data-panel="orders">Ողջ պատվերները</button>
+ <button class="pd-tab" data-panel="products">Ապրանքներ</button>
+ </div>
+
+ <!-- Доставка -->
+ <div class="pd-panel" id="panel-delivery">
+ <p class="adm-note">Порядок доставки: новые и подтвержденные заказы с доставкой на дом (Ереван или регионы), оплата может поступить позже.</p>
+ <div class="adm-table-wrap">
+ <table class="adm-table">
+ <thead>
+ <tr><th>Պատվեր</th><th>Հաճախորդ</th><th>Հասցե</th><th>Վճարում</th><th>Կարգավիճակ</th></tr>
+ </thead>
+ <tbody id="deliveryRows"></tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- Все заказы -->
+ <div class="pd-panel" id="panel-orders">
+ <div class="adm-table-wrap">
+ <table class="adm-table">
+ <thead>
+ <tr><th>Պատվեր</th><th>Հաճախորդ</th><th>Հասցե</th><th>Ապրանքներ</th><th>Վճարում</th><th>Կարգավիճակ</th></tr>
+ </thead>
+ <tbody id="orderRows"></tbody>
+ </table>
+ </div>
+ </div>
+
+ <!-- Товары -->
+ <div class="pd-panel" id="panel-products">
+ <div class="adm-toolbar">
+ <input type="search" id="prodSearch" placeholder="Փնտրել ապրանք…" style="max-width:280px">
+ <button class="btn btn-primary" id="prodNew">+ Ավելացնել ապրանք</button>
+ </div>
+
+ <form class="checkout-form adm-form" id="prodForm" onsubmit="return false" style="display:none">
+ <h4 id="formTitle">Նոր ապրանք</h4>
+ <div class="adm-grid">
+ <label>Անուն *<input type="text" id="fName" required></label>
+ <label>Կատեգորիա *<select id="fCat"></select></label>
+ <label>Գին (դր) *<input type="number" id="fPrice" min="1" required></label>
+ <label>Հին գին (զեղչի համար)<input type="number" id="fOld" min="0"></label>
+ <label>Ապրանքանիշ<input type="text" id="fBrand" value="Orbis"></label>
+ <label>Էմոջի<input type="text" id="fEmoji" value="" maxlength="8"></label>
+ <label>Բեջ<select id="fBadge"><option value="">—</option><option value="new">Նոր</option><option value="hit">Հիթ</option></select></label>
+ <label>Պահեստում (հատ)<input type="number" id="fStock" value="10" min="0"></label>
+ <label>Ֆոնի գույնը<select id="fTint"></select></label>
+ <label>Տարիքը
+ <span class="f-ages" id="fAges">
+ <label class="check-row"><input type="checkbox" value="0-3"> 0–3</label>
+ <label class="check-row"><input type="checkbox" value="3-6" checked> 3–6</label>
+ <label class="check-row"><input type="checkbox" value="6-9"> 6–9</label>
+ <label class="check-row"><input type="checkbox" value="9+"> 9+</label>
+ </span>
+ </label>
+ </div>
+ <label>Նկարագրություն<textarea id="fDesc" rows="3"></textarea></label>
+ <label>Լուսանկարներ (մինչև 6՝ JPG/PNG/WebP)
+ <div class="photo-strip" id="photoStrip"></div>
+ <input type="file" id="fPhotos" accept="image/jpeg,image/png,image/webp" multiple hidden>
+ </label>
+ <div class="adm-form-actions">
+ <button class="btn btn-primary" type="button" id="formSave">Պահպանել</button>
+ <button class="btn btn-ghost" type="button" id="formCancel">Չեղարկել</button>
+ </div>
+ </form>
+
+ <div class="adm-table-wrap">
+ <table class="adm-table">
+ <thead>
+ <tr><th></th><th>Ապրանք</th><th>Գին</th><th>Բեջ</th><th>Պահեստ</th><th></th></tr>
+ </thead>
+ <tbody id="prodRows"></tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+
+ <footer class="footer" style="margin-top:64px">
+ <div class="container">
+ <div class="f-bottom" style="border-top:none">
+ <span>© 2026 Փղիկ.am — Բոլոր իրավունքները պաշտպանված են</span>
+ <span><a href="index.html">Դեպի խանութ →</a></span>
+ </div>
+ </div>
+ </footer>
+
+ <div class="toast" id="toast" role="status"></div>
+
+ <script src="js/app.js" defer></script>
+ <script src="js/lang.js" defer></script>
+ <script src="js/main.js" defer></script>
+ <script src="js/admin.js" defer></script>
+</body>
+</html>

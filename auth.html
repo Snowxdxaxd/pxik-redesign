@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Մուտք / Գրանցում — Փղիկ.am</title>
+ <meta name="description" content="Մուտք անձնական հաշիվ՝ պատվերներ, ընտրյալներ, առաքման տվյալներ:">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="css/style.css">
+ <script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="inner">
+
+ <div class="topbar">
+ <div class="container topbar-in">
+ <div class="topbar-left">
+ <a class="tb-item" href="https://yandex.com/maps/-/CXQMM8My" target="_blank" rel="noopener">Երևան, Արտեմ Միկոյանի փող. 14</a>
+ <span class="tb-item tb-delivery">Առաքում ամբողջ Հայաստանում</span>
+ </div>
+ <div class="topbar-right">
+ <a class="tb-item" href="tel:+37493553944">+374 93 55 39 44</a>
+ <a class="tb-callback" href="index.html#contacts">Պատվիրել զանգ</a>
+ </div>
+ </div>
+ </div>
+
+ <header class="header" id="header">
+ <div class="container header-in">
+ <a class="logo" href="index.html">
+ <span class="logo-mark">Փ</span>
+ <span class="logo-text">փղիկ<b>.am</b></span>
+ </a>
+ <div class="search">
+ <svg class="search-ico" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+ <input type="search" placeholder="Փնտրել խաղալիք, տիկնիկ, ապրանքանիշ…" aria-label="Որոնում">
+ <button class="search-btn" type="button">Որոնել</button>
+ </div>
+ </div>
+ </header>
+
+ <div class="auth-wrap">
+ <div class="auth-card">
+ <div class="tabs" role="tablist">
+ <button class="pd-tab active" data-panel="login">Մուտք</button>
+ <button class="pd-tab" data-panel="register">Գրանցում</button>
+ </div>
+
+ <form class="auth-form active" id="panel-login" onsubmit="return false">
+ <label>Էլ. հասցե
+ <input type="email" id="lEmail" placeholder="you@mail.am" autocomplete="email">
+ </label>
+ <label>Գաղտնաբառ
+ <input type="password" id="lPassword" placeholder="••••••••" autocomplete="current-password">
+ </label>
+ <button class="btn btn-primary btn-block" id="loginBtn" type="button">Մուտք գործել</button>
+ <div class="auth-hint">
+ <b>Դեմո-հաշիվներ</b>
+ <span>Հաճախորդ՝ demo@pxik.am / demo1234</span>
+ <span>Ադմին՝ admin@pxik.am / admin123</span>
+ </div>
+ </form>
+
+ <form class="auth-form" id="panel-register" onsubmit="return false">
+ <label>Անուն Ազգանուն
+ <input type="text" id="rName" placeholder="Արամ Աբրահամյան" autocomplete="name">
+ </label>
+ <label>Էլ. հասցե
+ <input type="email" id="rEmail" placeholder="you@mail.am" autocomplete="email">
+ </label>
+ <label>Հեռախոս
+ <input type="tel" id="rPhone" placeholder="+374 91 000000" autocomplete="tel">
+ </label>
+ <label>Գաղտնաբառ (առնվազն 6 նշան)
+ <input type="password" id="rPassword" placeholder="••••••••" autocomplete="new-password">
+ </label>
+ <button class="btn btn-primary btn-block" id="registerBtn" type="button">Ստեղծել հաշիվ</button>
+ </form>
+
+ <p class="auth-note">Գրանցվելով՝ կստանաք ընտրյալներ, պատվերների պատմություն և առցանց վճարում:</p>
+ </div>
+ </div>
+
+ <footer class="footer">
+ <div class="container">
+ <div class="f-bottom" style="border-top:none">
+ <span>© 2026 Փղիկ.am — Բոլոր իրավունքները պաշտպանված են</span>
+ <span><a href="index.html">Դեպի խանութ →</a></span>
+ </div>
+ </div>
+ </footer>
+
+ <div class="toast" id="toast" role="status"></div>
+
+ <script src="js/app.js" defer></script>
+  <script src="js/main.js" defer></script>
+ <script src="js/lang.js" defer></script>
+ <script src="js/auth.js" defer></script>
+</body>
+</html>
